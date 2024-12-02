@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento - Cartão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Usuarios/pagamento.css') }}">
+</head>
+<body>
+    <header>
+        
+    </header>
+    <div class="container-form">
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div class="container-campos">
+                {{ form.num_cartao.label(class="label") }}
+                {{ form.num_cartao(class="input") }}
+
+                {{ form.codigo_cartao.label(class="label") }}
+                {{ form.codigo_cartao(class="input") }}
+            </div>
+                {{ form.botao_confirm(class="button") }}
+        </form>
+    </div>
+    <div class="link">
+        <a href="{{ url_for('inicio') }}">Voltar</a>
+    </div>
+</body>
+</html>

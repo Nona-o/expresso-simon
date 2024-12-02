@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Usuarios/perfil.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('homepage') }}">
+                        <button>Homepage</button>
+                    </a>
+                    <a href="{{ url_for('minhasacola') }}">
+                        <button>Minha Sacola</button>
+                    </a>
+                    <a href="{{ url_for('perfil') }}"> 
+                        <button>Editar perfil</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Perfil de {{usuario.username}}</h1>
+        <div class="container-form">
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="container-campos">
+                    {{ form.nome_usuario.label(class="label") }}
+                    {{ form.nome_usuario(class="input") }}                
+    
+                    {{ form.email.label(class="label") }}
+                    {{ form.email(class="input") }}
+                </div>
+                    {{ form.botao_confirm(class="button") }}
+            </form>
+        </div>
+        <div class="link">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+</body>
+</html>

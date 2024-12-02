@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginCadastro/inicio.css') }}">
+</head>
+<body>
+    <header>
+    </header>
+    <div class="container-inicio">
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='img_site/logo1.png') }}">
+            </div>
+        <h1>Expresso Simon</h1>
+            <div class="container-opcoes">
+                <a href="{{ url_for('cadastro') }}">
+                    <button>Criar Nova Conta</button>
+                </a>
+                <div class="link">
+                    <a href="{{ url_for('login') }}">Já possui uma conta?</a>
+                    <a href="{{ url_for('loginfuncionario') }}">Funcionários</a>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

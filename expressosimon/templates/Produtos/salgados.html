@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Salgados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Produtos/produtos.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('homepage') }}">
+                        <button>Homepage</button>
+                    </a>
+                    <a href="{{ url_for('minhasacola') }}">
+                        <button>Minha Sacola</button>
+                    </a>
+                    <a href="{{ url_for('perfil') }}"> 
+                        <button>Editar perfil</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+        <div class="produtos">
+            {% for produto in produtos %}
+                <div class="container-produto">
+                    <div class="imagem-produto">
+                        <img src="{{ url_for('static', filename='img_produtos/{}'.format(produto.imagem)) }}">
+                    </div>
+                        <div class="container-info">
+                            <div class="info-produto">
+                                <p>{{ produto.nome }}</p>
+                                <p>R${{ produto.preco }}</p>
+                            </div>
+                            <div class="botoes">
+                                <form method="POST">
+                                {{ form_add.csrf_token }}
+                                    {{ form_add.botao_add(class="button") }}
+                                    {{ form_add.id_produto(value=produto.id) }}
+                                </form>
+
+                                <form method="POST">
+                                {{ form_remove.csrf_token }}
+                                    {{ form_remove.botao_remove(class="button") }}
+                                    {{ form_remove.id_produto(value=produto.id) }}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+</body>
+</html>

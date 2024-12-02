@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Usuarios/homepage.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('homepage') }}">
+                        <button>Homepage</button>
+                    </a>
+                    <a href="{{ url_for('minhasacola') }}">
+                        <button>Minha Sacola</button>
+                    </a>
+                    <a href="{{ url_for('perfil') }}"> 
+                        <button>Editar perfil</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="produtos">
+        <a href="{{ url_for('promocoes') }}">
+            <img src="{{ url_for('static', filename='img_site/promocoes.jpg') }}">
+            <p>Promoções</p>
+        </a>
+    </div>
+    <div class="categorias">
+        <div>
+            <a href="{{ url_for('paes') }}">
+                <img src="{{ url_for('static', filename='img_site/paes.jpg') }}">
+                <p>Pães</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('salgados') }}">
+                <img src="{{ url_for('static', filename='img_site/salgados.jpg') }}">
+                <p>Salgados</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('sobremesas') }}">
+                <img src="{{ url_for('static', filename='img_site/sobremesas.jpg') }}">
+                <p>Sobremeses</p>
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('bebidas') }}">
+                <img src="{{ url_for('static', filename='img_site/bebidas.jpg') }}">
+                <p>bebidas</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Funcionarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginCadastro/funcionarios.css') }}">
+</head>
+<body>
+    <div class="imagem">
+        <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+    </div>
+        <div class="container-form">
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="container-campos">
+                    {{ form.login.label(class="label") }}
+                    {{ form.login(class="input") }}
+
+                    {{ form.senha.label(class="label") }}
+                    {{ form.senha(class="input") }}
+                </div>
+                    {{ form.botao_confirm(class="button") }}
+            </form>
+        </div>
+        <div class="link">
+            <a href="{{ url_for('inicio') }}">Voltar</a>
+        </div>
+</body>
+</html>

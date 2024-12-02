@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Sacola</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Usuarios/minhasacola.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('homepage') }}">
+                        <button>Homepage</button>
+                    </a>
+                    <a href="{{ url_for('minhasacola') }}">
+                        <button>Minha Sacola</button>
+                    </a>
+                    <a href="{{ url_for('perfil') }}"> 
+                        <button>Editar perfil</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    {% if escolhendo %}
+    
+    <h1>Seu pedido atual</h1>
+            <div class="pedido">
+                <div class="container">
+                    <h3>Status:         {{ escolhendo.status }}</h3>
+                    <div class="container-for">
+                        <div class="produtos">
+                            {% for produto in listaprodutos %}
+                                <p>{{ produto }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="quantidades">
+                            {% for quantidade in listaquantidades %}
+                            <p>Quantidade: {{ quantidade }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p>Valor total: R${{ preco }}</p>
+                </div>
+            </div>
+            <div class="container-form">
+                <form method="POST">
+
+                    {{ form.csrf_token }}
+                    <div class="container-campos">
+                        {{ form.endereco.label(class="label") }}
+                        {{ form.endereco(class="input") }}
+                    </div>  
+                        {{ form.botao_confirm(class="button") }}
+                </form>
+            </div>
+
+    {% elif preparando %}
+
+    <h1>Seu pedido atual</h1>
+            <div class="pedido">
+                <div class="container">
+                    <h3>Status:         {{ preparando.status }}</h3>
+                    <div class="container-for">
+                        <div class="produtos">
+                            {% for produto in listaprodutos %}
+                                <p>{{ produto }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="quantidades">
+                            {% for quantidade in listaquantidades %}
+                            <p>Quantidade: {{ quantidade }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p>Valor total: R${{ preco }}</p>
+                </div>
+            </div>
+
+    {% elif entrega %}
+
+    <h1>Seu pedido atual</h1>
+            <div class="pedido">
+                <div class="container">
+                    <h3>Status:         {{ entrega.status }}</h3>
+                    <div class="container-for">
+                        <div class="produtos">
+                            {% for produto in listaprodutos %}
+                                <p>{{ produto }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="quantidades">
+                            {% for quantidade in listaquantidades %}
+                            <p>Quantidade: {{ quantidade }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <p>Valor total: R${{ preco }}</p>
+                </div>
+            </div>
+                
+    {% else %}
+
+    <h1> Você não tem nenhum pedido ainda </h1>
+
+    {% endif %}
+</body>
+</html>

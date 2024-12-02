@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pedido Realizado</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/Usuarios/pagamentorealizado.css') }}">
+    </head>
+    <body>
+        <header>
+            <div class="container-nav">
+                <nav>
+                    <div class="logo">
+                        <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                        <p>Expresso Simon</p>
+                    </div>
+                    <div class="restante-nav">
+                        <a href="{{ url_for('homepage') }}">
+                            <button>Homepage</button>
+                        </a>
+                        <a href="{{ url_for('minhasacola') }}">
+                            <button>Minha Sacola</button>
+                        </a>
+                        <a href="{{ url_for('perfil') }}"> 
+                            <button>Editar perfil</button>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='img_site/logosaquinho.png') }}">
+            </div>
+            <div>
+                <h1>Pedido Realizado com sucesso</h1>
+                <h2>Você pode acompanhar o status do seu pedido em "Minha Sacola"</h2>
+            </div>
+    </body>
+</html>

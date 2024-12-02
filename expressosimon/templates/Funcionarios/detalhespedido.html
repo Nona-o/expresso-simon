@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do pedido {{idpedido}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Funcionarios/detalhespedido.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('gerenciarpedidos') }}">
+                        <button>Pedidos Pendentes</button>
+                    </a>
+                    <a href="{{ url_for('entregas') }}">
+                        <button>Entregas</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <h1>Detalhes Pedido {{ idpedido }}</h1>
+    <div class="pedido">
+        <div class="container">
+            <h3>Status:         {{ pedido.status }}</h3>
+                {% if listaprodutos %}
+                    <div class="container-for">
+                        <div class="produtos">
+                            {% for produto in listaprodutos %}
+                                <p>{{ produto }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="quantidades">
+                            {% for quantidade in listaquantidades %}
+                            <p>Quantidade: {{ quantidade }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+            <div class="endereco">
+                <p>{{ localentrega }}</p>
+            </div>
+        </div>
+                {% endif %}
+        </div>
+    </div>
+    <div class="container-form">
+        <form method="POST">
+            {{ form.csrf_token }}
+                {{ form.botao_confirm(class="button") }}
+        </form>
+    </div>
+</body>
+</html>

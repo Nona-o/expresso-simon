@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginCadastro/cadastro.css') }}">
+</head>
+<body>
+    <div class="imagem">
+        <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+    </div>
+        <div class="container-form">
+            <form method="POST">
+                {{ form.csrf_token }}
+                <div class="container-campos">
+                    {{ form.nome_usuario.label(class="label") }}
+                    {{ form.nome_usuario(class="input") }}
+
+                    {{ form.email.label(class="label") }}
+                    {{ form.email(class="input") }}
+
+                    {{ form.senha.label(class="label") }}
+                    {{ form.senha(class="input") }}
+
+                    {{ form.confirm_senha.label(class="label") }}
+                    {{ form.confirm_senha(class="input") }}
+                </div>
+                    {{ form.botao_confirm(class="button") }}
+            </form>
+        </div>
+        <div class="link">
+            <a href="{{ url_for('inicio') }}">Voltar</a>
+        </div>
+
+</body>
+</html>

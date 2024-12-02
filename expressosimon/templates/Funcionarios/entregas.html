@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Entregas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Funcionarios/gerenciarpedidos.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container-nav">
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img_site/logocopinho.png') }}">
+                    <p>Expresso Simon</p>
+                </div>
+                <div class="restante-nav">
+                    <a href="{{ url_for('gerenciarpedidos') }}">
+                        <button>Pedidos Pendentes</button>
+                    </a>
+                    <a href="{{ url_for('entregas') }}">
+                        <button>Entregas</button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+        {% if pedidos %}
+            <div class="pedidos">
+                {% for pedido in pedidos %}
+                    <div class="container-pedido">
+                        <div class="imagem">
+                            <img src="{{ url_for('static', filename='img_site/logosaquinho.jpg') }}">
+                        </div>
+                        <div class="pedido-info">
+                            <div class="pedidos-info">
+                                <p>Pedido {{ pedido.id }}</p>
+                                <p>{{ pedido.status }}</p>
+                            </div>
+                            <div class="botao">
+                                <a href="{{ url_for('detalhespedido', idpedido='{}'.format(pedido.id)) }}">
+                                    <button>Detalhes</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+
+        <h1> Nenhum pedido encontrado </h1>
+        {% endif %}
+</body>
+</html>
